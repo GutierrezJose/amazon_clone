@@ -1,1 +1,51 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand nav" href="#">
+      <img src="amazon.png" alt="amazon logo" class="amazon-logo">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex align-items-center">
+        <li class="nav-item dropdown">
+          <button class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Todos
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Ropa</a></li>
+            <li><a class="dropdown-item" href="#">Electrodomesticos</a></li>
+            <li><a class="dropdown-item" href="#">Calzados</a></li>
+            <li><a class="dropdown-item" href="#">Otros</a></li>
+          </ul>
+        </li>
+        <li>
+          <form class=" input-group" role="search">
+            <input class="form-control busqueda" type="search" placeholder="Buscar Amazon" aria-label="Search">
+            <button class="btn btn-outline-success busqueda-button" type="submit">
+              <img src="lupa.png" alt="lupa" class="lupa-icon">
+            </button>
+          </form>
+        </li>
+      </ul>
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 d-flex align-items-center">
+          <li class="nav-item">
+            <a class="nav-link nav-utils active nav" aria-current="page" href="#">Hola, Identificate <br> <b>Cuentas ylistas</b></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-utils active nav" aria-current="page" href="#">Devoluciones <br> <b>y Pedidos</b></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-utils active nav" aria-current="page" href="#">
+              <img src="carrito.png" alt="carrito de compras" width="40px">
+              <b>Carrito</b>
+            </a>
+          </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
 <router-outlet />
