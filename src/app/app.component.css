@@ -1,0 +1,90 @@
+html, body{
+    height: 100%;
+}
+
+ .container-fluid{
+    padding: 0;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}  
+
+.content{
+     flex: 1; 
+}
+.navbar{
+    background: linear-gradient(90deg, rgba(0,61,50,1) 0%, rgba(4,115,75,1) 72%);
+}
+
+.amazon-logo{
+    width: 100px;
+    height: 30px;
+    border: 20px;
+}
+
+.nav{
+  padding: 10px;
+}
+
+.dropdown{
+    background-color: #E6E6E6;
+    border-top-left-radius: 10%;
+    border-bottom-left-radius: 10%;
+}
+
+.busqueda{
+    border-top-left-radius: 0%;
+    border-bottom-left-radius: 0%;
+    width: 700px;
+}
+
+.busqueda-button{
+    background-color: #A9176F;
+}
+
+.lupa-icon{
+    width: 20px;
+    height: 20px;
+}
+
+.nav-utils{
+    color: white !important;
+}
+
+.footer{
+    background-color: #232F3E;
+    text-align: center;
+    padding: 30px;
+}
+
+.logo-footer{
+    padding-right: 20px;
+}
+
+.about{
+    color: #DDDDDD !important; 
+    text-decoration: none;
+}
+
+.busqueda-button:hover{
+    background-color: #7F1153;
+}
+
+.dropdown:hover{
+    background-color:#D4D4D4;
+}
+
+.nav:hover{
+    border: 1px solid white;
+}
+
+.form-control:focus{
+    outline: none;
+    box-shadow: none;
+    border-color: #f171be;
+    border-width: 3px;
+}
+
+.about:hover{
+    text-decoration: underline;
+}
