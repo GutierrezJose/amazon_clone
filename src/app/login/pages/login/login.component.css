@@ -1,0 +1,22 @@
+    .container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.formulario{
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 30px;
+    width: 350px;
+}
+
+.btn{
+    background-color: #FFD814;
+    margin-bottom: 6px;
+}
+
+.btn:hover{
+    background-color: #F7CA00;
+}

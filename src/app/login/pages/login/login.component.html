@@ -1,0 +1,21 @@
+<div class="container">
+    <div>
+        <a href="" routerLink="">
+            <img src="amazon-logo.png" alt="amazon logo" width="150px">
+        </a>
+    </div>
+
+
+    <div class="formulario">
+        <form [formGroup]="loginForm" class="needs-validation" novalidate>
+            <div class="mb-3">
+                <h5>Iniciar Sesión</h5>
+                <label for="exampleInputEmail1" class="form-label">Email</label>
+                @if(hasErrors('email', 'required')){ <div class="text-danger"> Ingresa tu correo electrónico </div> }
+                @if(hasErrors('email', 'email')){ <div class="text-danger"> Ingresa una dirección de correo electrónico válido</div>   }
+                <input type="email" class="form-control" id="exampleInputEmail1" formControlName="email" required="">
+            </div>
+            <button type="submit" class="btn form-control"><b>Continuar</b></button>
+        </form>
+    </div>
+</div>
