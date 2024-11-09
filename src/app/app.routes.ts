@@ -14,5 +14,6 @@ export const routes: Routes = [
     {path: 'products/:id', component: ProductDetailComponent},
     {path: 'products/purchase/:id', component: ProductPurchaseComponent},
     {path: 'products', component: ProductsComponent},
-    {path: '**', component: HomeComponent}
+    {path: '**', component: HomeComponent},
+    {path: 'home', component: HomeComponent}
 ];

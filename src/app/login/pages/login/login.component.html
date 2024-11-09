@@ -8,15 +8,32 @@
 
     <div class="formulario">
         <form [formGroup]="loginForm" class="needs-validation" novalidate>
+            @if (!emailCorrect) {
             <div class="mb-3">
                 <h5>Iniciar Sesión</h5>
                 <label for="exampleInputEmail1" class="form-label">Email</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" formControlName="email" required=""> <br>
                 @if(hasErrors('email', 'required')){ <div class="text-danger"> Ingresa tu correo electrónico </div> }
-                @if(hasErrors('email', 'email')){ <div class="text-danger"> Ingresa una dirección de correo electrónico válido</div>}
-                @if(blankInput){ <div class="text-danger"> Ingresa tu correo electrónico </div>}
-                <input type="email" class="form-control" id="exampleInputEmail1" formControlName="email" required="">
+                @if(hasErrors('email', 'email')){ <div class="text-danger"> Ingresa una dirección de correo electrónico
+                    válido</div>}
+                @if(blankEmailInput){ <div class="text-danger"> Ingresa tu correo electrónico </div>}
+                <button type="submit" class="btn form-control" (click)="verificarEmail()"><b>Continuar</b></button>
             </div>
-            <button type="submit" class="btn form-control" (click)="verificarEmail()"><b>Continuar</b></button>
+        }
+        
+        @if(emailCorrect){
+            <div class="mb-3">
+                <h5>Iniciar Sesión</h5>
+                <label for="exampleInputEmail1" class="form-label">{{email}}</label>
+                <a href="" (click)="emailCorrect=false" class="change-email">Cambiar</a> <br>
+                <label for="inputPassword5" class="form-label">Contraseña</label>
+                @if(hasErrors('password', 'required')){ <div class="text-danger"> Ingresa tu contraseña </div> }
+                @if(blankPasswordInput){ <div class="text-danger"> Ingresa tu contraseña </div>}
+                @if(datosIncorrectos == true){ <div class="text-danger"> Datos incorrectos </div>}
+                <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock" formControlName="password"> <br>
+                <button type="submit" class="btn form-control" (click)="login()"><b>Iniciar sesión</b></button>
+            </div>
+            }
         </form>
     </div>
 </div>
