@@ -12,16 +12,17 @@
             <div class="mb-3">
                 <h5>Iniciar Sesión</h5>
                 <label for="exampleInputEmail1" class="form-label">Email</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" formControlName="email" required=""> <br>
+                <input type="email" class="form-control" id="exampleInputEmail1" formControlName="email" required="">
+                <br>
                 @if(hasErrors('email', 'required')){ <div class="text-danger"> Ingresa tu correo electrónico </div> }
                 @if(hasErrors('email', 'email')){ <div class="text-danger"> Ingresa una dirección de correo electrónico
                     válido</div>}
                 @if(blankEmailInput){ <div class="text-danger"> Ingresa tu correo electrónico </div>}
-                <button type="submit" class="btn form-control" (click)="verificarEmail()"><b>Continuar</b></button>
+                <button type="submit" class="btn form-control btn-login" (click)="verificarEmail()"><b>Continuar</b></button>
             </div>
-        }
-        
-        @if(emailCorrect){
+            }
+
+            @if(emailCorrect){
             <div class="mb-3">
                 <h5>Iniciar Sesión</h5>
                 <label for="exampleInputEmail1" class="form-label">{{email}}</label>
@@ -30,10 +31,23 @@
                 @if(hasErrors('password', 'required')){ <div class="text-danger"> Ingresa tu contraseña </div> }
                 @if(blankPasswordInput){ <div class="text-danger"> Ingresa tu contraseña </div>}
                 @if(datosIncorrectos == true){ <div class="text-danger"> Datos incorrectos </div>}
-                <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock" formControlName="password"> <br>
-                <button type="submit" class="btn form-control" (click)="login()"><b>Iniciar sesión</b></button>
+                <input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock"
+                    formControlName="password"> <br>
+                <button type="submit" class="btn form-control btn-login" (click)="login()"><b>Iniciar sesión</b></button>
             </div>
             }
         </form>
+    </div>
+
+    <br>
+    <div class="create-account d-flex flex-column">
+        <div class="d-flex">
+            <hr>
+            <h6>&nbsp; ¿Eres nuevo en Amazon? &nbsp;</h6>
+            <hr>
+        </div>
+        <div class="button-container">
+            <button type="button" class="btn btn-outline-secondary create-account-button" routerLink="/login/create-account">Crear tu cuenta de Amazon</button>
+        </div>
     </div>
 </div>

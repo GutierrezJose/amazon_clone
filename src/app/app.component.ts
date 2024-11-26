@@ -20,7 +20,11 @@ export class AppComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute){}
 
   isLoginRoute(): boolean{
-    return this.router.url === '/login';
+    if(this.router.url === '/login' || this.router.url === '/login/create-account'){
+      return true;
+    } else{
+      return false;
+    }
   }
 
   ngOnInit(): void {
