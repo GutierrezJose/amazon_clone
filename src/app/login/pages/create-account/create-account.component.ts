@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CustomValidators } from '../../validators/custom-validators';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-create-account',
@@ -14,7 +15,12 @@ export class CreateAccountComponent {
   createUserForm: FormGroup;
   contrasenasNoCoinciden: boolean = false;
   tieneNumeros: boolean = false;
-
+  userService = inject(UserService);
+  name : string = '';
+  email : string = '';
+  password : string = '';
+  avatar : string = 'https://cdn-icons-png.flaticon.com/512/6596/6596121.png';
+  usuarioCreado : boolean = false;
   constructor(private formBuilder: FormBuilder) {
     this.createUserForm = this.formBuilder.group({
       nombreCompleto: ['', [Validators.required, CustomValidators.noNumbersValidator()]],
@@ -33,17 +39,20 @@ export class CreateAccountComponent {
     if (this.createUserForm.invalid) {
       this.createUserForm.markAllAsTouched();
       return;
+    } else {
+      this.name = this.createUserForm.get('nombreCompleto')?.value;
+      this.email = this.createUserForm.get('email')?.value;
+      this.password = this.createUserForm.get('password')?.value;
+      this.userService.createUSer(this.name, this.email, this.password, this.avatar).subscribe((response) => {
+        if(response.status === 201){
+          this.usuarioCreado = true
+        }
+      })
     }
 
   }
 }
 
-
-function passwordMatchValidator(arg0: string, arg1: string): any {
-  throw new Error('Function not implemented.');
-}
 /**
- * Pendiente: AGREGAR UNA VALIDACION EN EL INPUT DEL NOMBRE PARA QUE
- * NO PERMITA INGRESAR NUMEROS
+ * Por hacer: Registro del usuario
  */
-

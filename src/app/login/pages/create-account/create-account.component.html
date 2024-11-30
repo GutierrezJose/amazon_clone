@@ -26,6 +26,7 @@
         @if(createUserForm.errors?.['passwordNotMatch']) { <div class="text-danger">Las contraseñas no coinciden</div>}
         <br>
         <button type="submit" class="btn form-control btn-create-account" (click)="registrarUsuario()"><b>Continuar</b></button>
+        @if(usuarioCreado) {<div class="alert alert-success" role="alert"> Usuario registrado correctamente </div> }
       </div>
     </form>
     <hr>

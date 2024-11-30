@@ -26,4 +26,8 @@ export class UserService {
       'Authorization': `Bearer ${this.token.getToken()}`
     })})
   }
+
+  createUSer(name: string, email: string, password: string, avatar: string): Observable <any>{
+    return this.http.post(`${this.baseUrl}/users`, {name, email, password, avatar}, {observe: 'response'});
+  }
 }
