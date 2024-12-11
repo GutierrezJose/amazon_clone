@@ -12,22 +12,25 @@ import { UserService } from '../../../services/user.service';
 })
 export class CreateAccountComponent {
 
+  userService = inject(UserService);
   createUserForm: FormGroup;
   contrasenasNoCoinciden: boolean = false;
   tieneNumeros: boolean = false;
-  userService = inject(UserService);
-  name : string = '';
-  email : string = '';
-  password : string = '';
-  avatar : string = 'https://cdn-icons-png.flaticon.com/512/6596/6596121.png';
-  usuarioCreado : boolean = false;
+  correoNoDisponible: boolean = false;
+  usuarioCreado: boolean = false;
+
+  name: string = '';
+  email: string = '';
+  password: string = '';
+  passwordRepeate: string = '';
+  avatar: string = 'https://cdn-icons-png.flaticon.com/512/6596/6596121.png';
   constructor(private formBuilder: FormBuilder) {
     this.createUserForm = this.formBuilder.group({
       nombreCompleto: ['', [Validators.required, CustomValidators.noNumbersValidator()]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(5)]],
       passwordRepeate: ['', [Validators.required, Validators.minLength(5)]]
-    }, {validators: CustomValidators.passwordMatchValidator('password', 'passwordRepeate')});
+    });
   }
 
   hasErrors(field: string, typeError: string) {
@@ -36,6 +39,14 @@ export class CreateAccountComponent {
 
 
   registrarUsuario() {
+
+    if (this.createUserForm.get('password')?.value !== this.createUserForm.get('passwordRepeate')?.value) {
+      this.contrasenasNoCoinciden = true;
+      return;
+    } else {
+      this.contrasenasNoCoinciden = false;
+    }
+
     if (this.createUserForm.invalid) {
       this.createUserForm.markAllAsTouched();
       return;
@@ -44,15 +55,10 @@ export class CreateAccountComponent {
       this.email = this.createUserForm.get('email')?.value;
       this.password = this.createUserForm.get('password')?.value;
       this.userService.createUSer(this.name, this.email, this.password, this.avatar).subscribe((response) => {
-        if(response.status === 201){
+        if (response.status === 201) {
           this.usuarioCreado = true
         }
       })
     }
-
   }
 }
-
-/**
- * Por hacer: Registro del usuario
- */
